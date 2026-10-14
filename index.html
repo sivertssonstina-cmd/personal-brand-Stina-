@@ -3,13 +3,19 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Stina Sivertsson – Digital Marketing Specialist</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <script defer src="script.js"></script>
 </head>
 
 <body>
-    <header>
+    <header class="sidhuvud">
         <div>
             <h1>Stina Sivertsson</h1>
             <p class="roll">Digital Marketing Specialist i Göteborg</p>
@@ -22,69 +28,88 @@
                 <li><a href="#kontakt">Kontakt</a></li>
             </ul>
         </nav>
+        <button id="tema" type="button" aria-label="Växla mörkt läge" aria-pressed="false">🌙 Mörkt läge</button>
     </header>
 
     <main>
-        <section>
+        <section class="hero">
             <h2>Jag bygger mina kunskaper inom sök, sociala medier och marknadsföring</h2>
-            <p>Med ett stort intresse för sociala medier och digital marknadsföring ser jag fram emot att utveckla mina kunskaper och ta steget in i branschen för små och medelstora företag.</p>
-            <a href="#kontakt">Kontakta mig</a>
+            <p>Med ett stort intresse för sociala medier och digital marknadsföring ser jag fram emot att utveckla mina
+                kunskaper och ta steget in i branschen för små och medelstora företag.</p>
+            <a href="#kontakt" class="knapp">Kontakta mig</a>
         </section>
 
         <section id="om">
             <h2>Om mig</h2>
-            <img src="Img/stina bild.jpeg" alt="Porträtt av Stina Sivertsson" width="400"
-                height="400">
-            <p>Jag är en glad och social tjej som gillar att ta mig an nya utmaningar. Just nu utbildar jag mig till Digital Marketing Specialist på IHM Business School i Göteborg.</p>
-            <p>Intresset för sociala medier och digital marknadsföring är något som jag haft länge. Innan utbildningen har jag jobbat mycket med service, försäljning och kundkontakt. Det har gett mig stor vana av att möta olika typer av kunder, leverera service på hög nivå och hantera stressiga situationer med god samarbetsförmåga.</p>
+            <div class="om-layout">
+                <img src="Img/stina bild.jpeg" alt="Porträtt av Stina Sivertsson" width="400" height="400">
+                <div class="om-text">
+                    <p>Jag är en glad och social tjej som gillar att ta mig an nya utmaningar. Just nu utbildar jag mig
+                        till Digital Marketing Specialist på IHM Business School i Göteborg.</p>
+                    <p>Intresset för sociala medier och digital marknadsföring är något som jag haft länge. Innan
+                        utbildningen har jag jobbat mycket med service, försäljning och kundkontakt. Det har gett mig
+                        stor vana av att möta olika typer av kunder, leverera service på hög nivå och hantera stressiga
+                        situationer med god samarbetsförmåga.</p>
+                </div>
+            </div>
         </section>
 
         <section id="utbildning">
             <h2>Utbildning</h2>
-            <ul>
-                <li>
+            <ul class="rutnat">
+                <li class="kort">
                     <h3>IHM Business School – Digital Marketing Specialist</h3>
-                    <p>Augusti 2026 – Pågående. Kurser inom bland annat marknadsföring, AI och tech samt karriärplanering inför LIA-praktik.</p>
+                    <p>Augusti 2026 – Pågående. Kurser inom bland annat marknadsföring, AI och tech samt
+                        karriärplanering inför LIA-praktik.</p>
                 </li>
-                <li>
+                <li class="kort">
                     <h3>Peder Skrivares Skola – Handel och Administration</h3>
-                    <p>Augusti 2019 – Juni 2022. Gymnasieutbildning med inriktning mot handel, administration och kundrelationer.</p>
+                    <p>Augusti 2019 – Juni 2022. Gymnasieutbildning med inriktning mot handel, administration och
+                        kundrelationer.</p>
                 </li>
-                <li>
+                <li class="kort">
                     <h3>Kompetenser & kvalifikationer</h3>
-                    <p>Digital kompetens (Instagram & TikTok), strukturerad och noggrann, kreativ och idérik lagspelare. Svenska (modersmål), engelska (flytande) och manuellt B-körkort.</p>
+                    <p>Digital kompetens (Instagram & TikTok), strukturerad och noggrann, kreativ och idérik lagspelare.
+                        Svenska (modersmål), engelska (flytande) och manuellt B-körkort.</p>
                 </li>
             </ul>
         </section>
 
         <section id="erfarenheter">
             <h2>Erfarenheter</h2>
-            <article>
-                <img src="img/projekt-1.jpg" alt="Sociala medier och innehållsskapande" width="600"
-                    height="400">
-                <h3>Sociala medier & innehållsskapande</h3>
-                <p>Digital kompetens inom Instagram och TikTok. Stort intresse och vana av att följa nya trender, redigera samt skapa engagerande foto- och videomaterial.</p>
-            </article>
-            <article>
-                <img src="img/projekt-2.jpg"
-                    alt="Kampanjarbete och butiksförsäljning" width="600" height="400">
-                <h3>Kampanjarbete & butiksförsäljning</h3>
-                <p>Erfarenhet från Kicks och Hajen av att planera och genomföra butikskampanjer, arbeta i kassa och med varuhantering samt hantera olika kundsituationer.</p>
-            </article>
-            <article>
-                <img src="img/projekt-3.jpg" alt="Service och gästbemötande" width="600" height="400">
-                <h3>Service, kommunikation & ledarskap</h3>
-                <p>Mångårig erfarenhet som servitris och hovmästare på Taverna, &Olles, Scandinavian Brasserie och Brödernas. Van vid gästmottagning, högt tempo och service på svenska och engelska.</p>
-            </article>
+            <div class="rutnat">
+                <article class="kort">
+                    <img src="Img/projekt-1.jpg" alt="Sociala medier och innehållsskapande" width="600" height="400">
+                    <h3>Sociala medier & innehållsskapande</h3>
+                    <p>Digital kompetens inom Instagram och TikTok. Stort intresse och vana av att följa nya trender,
+                        redigera samt skapa engagerande foto- och videomaterial.</p>
+                </article>
+                <article class="kort">
+                    <img src="Img/projekt-2.jpg" alt="Kampanjarbete och butiksförsäljning" width="600" height="400">
+                    <h3>Kampanjarbete & butiksförsäljning</h3>
+                    <p>Erfarenhet från Kicks och Hajen av att planera och genomföra butikskampanjer, arbeta i kassa och
+                        med varuhantering samt hantera olika kundsituationer.</p>
+                </article>
+                <article class="kort">
+                    <img src="Img/projekt-3.jpg" alt="Service och gästbemötande" width="600" height="400">
+                    <h3>Service, kommunikation & ledarskap</h3>
+                    <p>Mångårig erfarenhet som servitris och hovmästare på Taverna, &Olles, Scandinavian Brasserie och
+                        Brödernas. Van vid gästmottagning, högt tempo och service på svenska och engelska.</p>
+                </article>
+            </div>
         </section>
 
         <section id="kontakt">
-            <h2>Kontakt</h2>
-            <p>Vill du veta mer eller komma i kontakt med mig? Hör gärna av dig via telefon, mejl eller LinkedIn.</p>
-            <p>Telefon: <a href="tel:+46708375995">+46 70 837 5995</a></p>
-            <p>E-post: <a href="mailto:sivertssonstina@gmail.com">sivertssonstina@gmail.com</a></p>
-            <p><a href="https://www.linkedin.com/in/stina-sivertsson/" target="_blank" rel="noopener">Stina Sivertsson på LinkedIn</a></p>
-            <p>Referens lämnas gärna på begäran.</p>
+            <div class="kontakt-ruta">
+                <h2>Kontakt</h2>
+                <p>Vill du veta mer eller komma i kontakt med mig? Hör gärna av dig via telefon, mejl eller LinkedIn.
+                </p>
+                <p>Telefon: <a href="tel:+46708375995">+46 70 837 5995</a></p>
+                <p>E-post: <a href="mailto:sivertssonstina@gmail.com">sivertssonstina@gmail.com</a></p>
+                <p><a href="https://www.linkedin.com/in/stina-sivertsson/" target="_blank" rel="noopener">Stina
+                        Sivertsson på LinkedIn</a></p>
+                <p>Referens lämnas gärna på begäran.</p>
+            </div>
         </section>
     </main>
 

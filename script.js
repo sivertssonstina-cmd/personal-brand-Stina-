@@ -34,3 +34,19 @@ function kopieraMail() {
 if (kopiera) {
     kopiera.addEventListener("click", kopieraMail);
 }
+
+// Knapp med id="tema" som växlar klassen morkt på body
+const temaKnapp = document.querySelector("#tema");
+
+function vaxlaTema() {
+    document.body.classList.toggle("morkt");
+    if (temaKnapp) {
+        const arMorkt = document.body.classList.contains("morkt");
+        temaKnapp.textContent = arMorkt ? "☀️ Ljust läge" : "🌙 Mörkt läge";
+        temaKnapp.setAttribute("aria-pressed", arMorkt ? "true" : "false");
+    }
+}
+
+if (temaKnapp) {
+    temaKnapp.addEventListener("click", vaxlaTema);
+}
