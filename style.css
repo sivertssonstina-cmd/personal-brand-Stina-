@@ -629,7 +629,56 @@ nav a:hover::after {
     color: var(--burgundy);
 }
 
-/* Kompetensbrickor / taggar */
+/* Strukturerade kompetensgrupper och punktlistor */
+.kompetens-grupp {
+    margin-top: 1rem;
+    padding-top: 0.85rem;
+    border-top: 1px solid rgba(70, 14, 24, 0.08);
+}
+
+.kompetens-grupp:first-of-type {
+    margin-top: 0.5rem;
+    padding-top: 0;
+    border-top: none;
+}
+
+.kompetens-grupp h4 {
+    font-family: var(--font-sans);
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--burgundy);
+    margin: 0 0 0.45rem 0;
+}
+
+.kompetens-lista {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.kompetens-lista li {
+    font-size: 0.92rem;
+    line-height: 1.5;
+    color: var(--text-secondary);
+    position: relative;
+    padding-left: 1.15rem;
+}
+
+.kompetens-lista li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--sand-accent);
+    font-size: 1.15rem;
+    line-height: 1.2;
+}
+
+/* Kompetensbrickor / taggar (behålls för bakåtkompatibilitet) */
 .kompetens-taggar {
     display: flex;
     flex-wrap: wrap;
@@ -1042,6 +1091,22 @@ body.morkt .utbildning-kort h3 {
 
 body.morkt .dekor-status {
     background-color: #382b2f;
+    color: var(--sand-accent);
+}
+
+body.morkt .kompetens-grupp {
+    border-top-color: rgba(255, 255, 255, 0.08);
+}
+
+body.morkt .kompetens-grupp h4 {
+    color: var(--sand-accent);
+}
+
+body.morkt .kompetens-lista li {
+    color: var(--text-secondary);
+}
+
+body.morkt .kompetens-lista li::before {
     color: var(--sand-accent);
 }
 
