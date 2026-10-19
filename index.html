@@ -5,19 +5,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Stina Sivertsson – Digital Marketing Specialist</title>
+
+    <!-- Google Fonts: Editorial Serif, Script Accent & Modern Clean Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
+
     <link rel="stylesheet" href="style.css">
     <script defer src="script.js"></script>
+
+    <!-- Google Tag Manager -->
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-KW889N5X');</script>
+    <!-- End Google Tag Manager -->
 </head>
 
 <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KW889N5X" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <!-- Toppannonsering / Announcement bar -->
+    <div class="toppbanner">
+        <span>DIGITAL MARKETING SPECIALIST · GÖTEBORG · TILLGÄNGLIG FÖR LIA &amp; PROJEKT</span>
+    </div>
+
+    <!-- Header & Navigation -->
     <header class="sidhuvud">
-        <div>
-            <h1>Stina Sivertsson</h1>
+        <div class="varumarke">
+            <h1 class="logo-titel"><a href="#">Stina Sivertsson</a></h1>
             <p class="roll">Digital Marketing Specialist i Göteborg</p>
         </div>
         <nav aria-label="Huvudmeny">
@@ -32,89 +57,247 @@
     </header>
 
     <main>
-        <section class="hero">
-            <h2>Jag bygger mina kunskaper inom sök, sociala medier och marknadsföring</h2>
-            <p>Med ett stort intresse för sociala medier och digital marknadsföring ser jag fram emot att utveckla mina
-                kunskaper och ta steget in i branschen för små och medelstora företag.</p>
-            <a href="#kontakt" class="knapp">Kontakta mig</a>
-        </section>
+        <!-- Hero-sektion: Djup mörkröd bakgrund, stämningsfull bild, elegant skript & underliggande beige remsa -->
+        <section class="hero-sektion">
+            <div class="hero-innehall">
+                <div class="hero-text">
+                    <span class="hero-skript">Digital Marketing Specialist</span>
+                    <h2>Jag bygger mina kunskaper inom sök, sociala medier och marknadsföring</h2>
+                    <p>Med ett stort intresse för sociala medier och digital marknadsföring ser jag fram emot att
+                        utveckla mina
+                        kunskaper och ta steget in i branschen för små och medelstora företag.</p>
+                    <div class="hero-knapprad">
+                        <a href="#kontakt" class="knapp">Kontakta mig</a>
+                    </div>
+                </div>
+                <div class="hero-bild-omslag">
+                    <div class="hero-bild-ram">
+                        <img src="Img/stina bild.jpeg" alt="Porträtt av Stina Sivertsson" width="520" height="520"
+                            class="hero-bild">
+                    </div>
+                </div>
+            </div>
 
-        <section id="om">
-            <h2>Om mig</h2>
-            <div class="om-layout">
-                <img src="Img/stina bild.jpeg" alt="Porträtt av Stina Sivertsson" width="400" height="400">
-                <div class="om-text">
-                    <p>Jag är en glad och social tjej som gillar att ta mig an nya utmaningar. Just nu utbildar jag mig
-                        till Digital Marketing Specialist på IHM Business School i Göteborg.</p>
-                    <p>Intresset för sociala medier och digital marknadsföring är något som jag haft länge. Innan
-                        utbildningen har jag jobbat mycket med service, försäljning och kundkontakt. Det har gett mig
-                        stor vana av att möta olika typer av kunder, leverera service på hög nivå och hantera stressiga
-                        situationer med god samarbetsförmåga.</p>
+            <!-- Underliggande banner/remsa i ljus beige med nyckelord separerade med punkter -->
+            <div class="hero-remsa">
+                <div class="hero-remsa-innehall">
+                    <span>Marknadsföring &amp; Strategi</span>
+                    <span class="prick">•</span>
+                    <span>Sociala Medier</span>
+                    <span class="prick">•</span>
+                    <span>SEO &amp; SEM</span>
+                    <span class="prick">•</span>
+                    <span>Innehållsskapande</span>
+                    <span class="prick">•</span>
+                    <span>AI &amp; Tech</span>
+                    <span class="prick">•</span>
+                    <span>Digital Analys</span>
                 </div>
             </div>
         </section>
 
-        <section id="utbildning">
-            <h2>Utbildning</h2>
-            <ul class="rutnat">
-                <li class="kort">
-                    <h3>IHM Business School – Digital Marketing Specialist</h3>
-                    <p>Augusti 2026 – Pågående. Kurser inom bland annat marknadsföring, AI och tech samt
-                        karriärplanering inför LIA-praktik.</p>
-                </li>
-                <li class="kort">
-                    <h3>Peder Skrivares Skola – Handel och Administration</h3>
-                    <p>Augusti 2019 – Juni 2022. Gymnasieutbildning med inriktning mot handel, administration och
-                        kundrelationer.</p>
-                </li>
-                <li class="kort">
-                    <h3>Kompetenser & kvalifikationer</h3>
-                    <p>Digital kompetens (Instagram & TikTok), strukturerad och noggrann, kreativ och idérik lagspelare.
-                        Svenska (modersmål), engelska (flytande) och manuellt B-körkort.</p>
-                </li>
-            </ul>
-        </section>
+        <!-- Introduktionssektion / Kortmodul: Dämpad grå bakgrund, centrerat mörkrött kort med överlappande polaroid-bilder -->
+        <section id="om" class="sektion-om">
+            <div class="om-kort-omslag">
+                <!-- Ovanpå kortet överlappar två polaroid-liknande bilder med en lätt rotation -->
+                <div class="polaroid-behallare" aria-hidden="true">
+                    <div class="polaroid polaroid-vanster">
+                        <div class="polaroid-inre">
+                            <img src="Img/stina bild.jpeg" alt="Stina Sivertsson">
+                        </div>
+                    </div>
+                    <div class="polaroid polaroid-hoger">
+                        <div class="polaroid-inre">
+                            <img src="Img/projekt-1.jpg" alt="Kreativt innehållsskapande">
+                        </div>
+                    </div>
+                </div>
 
-        <section id="erfarenheter">
-            <h2>Erfarenheter</h2>
-            <div class="rutnat">
-                <article class="kort">
-                    <img src="Img/projekt-1.jpg" alt="Sociala medier och innehållsskapande" width="600" height="400">
-                    <h3>Sociala medier & innehållsskapande</h3>
-                    <p>Digital kompetens inom Instagram och TikTok. Stort intresse och vana av att följa nya trender,
-                        redigera samt skapa engagerande foto- och videomaterial.</p>
-                </article>
-                <article class="kort">
-                    <img src="Img/projekt-2.jpg" alt="Kampanjarbete och butiksförsäljning" width="600" height="400">
-                    <h3>Kampanjarbete & butiksförsäljning</h3>
-                    <p>Erfarenhet från Kicks och Hajen av att planera och genomföra butikskampanjer, arbeta i kassa och
-                        med varuhantering samt hantera olika kundsituationer.</p>
-                </article>
-                <article class="kort">
-                    <img src="Img/projekt-3.jpg" alt="Service och gästbemötande" width="600" height="400">
-                    <h3>Service, kommunikation & ledarskap</h3>
-                    <p>Mångårig erfarenhet som servitris och hovmästare på Taverna, &Olles, Scandinavian Brasserie och
-                        Brödernas. Van vid gästmottagning, högt tempo och service på svenska och engelska.</p>
-                </article>
+                <!-- Centrerat mörkrött rumsligt kort med rundade hörn och tunn ljus ram/glöd -->
+                <div class="om-kort">
+                    <span class="kort-skript">Lär känna mig</span>
+                    <h2>Om mig</h2>
+                    <p class="kort-underrubrik">NYFIKEN, DRIVEN &amp; REDO FÖR NYA UTMANINGAR</p>
+                    <div class="om-text">
+                        <p>Jag är en glad och social tjej som gillar att ta mig an nya utmaningar. Just nu utbildar jag
+                            mig
+                            till Digital Marketing Specialist på IHM Business School i Göteborg.</p>
+                        <p>Intresset för sociala medier och digital marknadsföring är något som jag haft länge. Innan
+                            utbildningen har jag jobbat mycket med service, försäljning och kundkontakt. Det har gett
+                            mig
+                            stor vana av att möta olika typer av kunder, leverera service på hög nivå och hantera
+                            stressiga
+                            situationer med god samarbetsförmåga.</p>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <section id="kontakt">
-            <div class="kontakt-ruta">
-                <h2>Kontakt</h2>
-                <p>Vill du veta mer eller komma i kontakt med mig? Hör gärna av dig via telefon, mejl eller LinkedIn.
-                </p>
-                <p>Telefon: <a href="tel:+46708375995">+46 70 837 5995</a></p>
-                <p>E-post: <a href="mailto:sivertssonstina@gmail.com">sivertssonstina@gmail.com</a></p>
-                <p><a href="https://www.linkedin.com/in/stina-sivertsson/" target="_blank" rel="noopener">Stina
-                        Sivertsson på LinkedIn</a></p>
-                <p>Referens lämnas gärna på begäran.</p>
+        <!-- Utbildning: Ljus, elegant sektion med strukturerade utbildningskort och kompetenstaggar -->
+        <section id="utbildning" class="sektion-utbildning">
+            <div class="sektion-behallare">
+                <div class="sektion-huvud">
+                    <span class="sektion-etikett">AKADEMISK BAKGRUND &amp; KOMPETENSER</span>
+                    <h2>Utbildning</h2>
+                </div>
+                <ul class="rutnat utbildning-rutnat">
+                    <li class="kort utbildning-kort">
+                        <div class="kort-topp-dekor">
+                            <span class="dekor-nummer">01</span>
+                            <span class="dekor-status">Pågående</span>
+                        </div>
+                        <h3>IHM Business School – Digital Marketing Specialist</h3>
+                        <p>Augusti 2026 – Pågående. Kurser inom bland annat marknadsföring, AI och tech samt
+                            karriärplanering inför LIA-praktik.</p>
+                    </li>
+                    <li class="kort utbildning-kort">
+                        <div class="kort-topp-dekor">
+                            <span class="dekor-nummer">02</span>
+                            <span class="dekor-status">Avklarad</span>
+                        </div>
+                        <h3>Peder Skrivares Skola – Handel och Administration</h3>
+                        <p>Augusti 2019 – Juni 2022. Gymnasieutbildning med inriktning mot handel, administration och
+                            kundrelationer.</p>
+                    </li>
+                    <li class="kort utbildning-kort kompetenser-kort">
+                        <div class="kort-topp-dekor">
+                            <span class="dekor-nummer">03</span>
+                            <span class="dekor-status">Färdigheter</span>
+                        </div>
+                        <h3>Kompetenser &amp; kvalifikationer</h3>
+                        <div class="kompetens-taggar">
+                            <span class="tagg">Marknadsföring och strategi</span>
+                            <span class="tagg">AI och tech</span>
+                            <span class="tagg">Karriärplanering</span>
+                            <span class="tagg">SEO</span>
+                            <span class="tagg">Paid media – social &amp; SEM</span>
+                            <span class="tagg">Content- och influencer marketing</span>
+                            <span class="tagg">Tracking &amp; digital analys</span>
+                        </div>
+                        <p><strong>Personliga styrkor:</strong> Strukturerad, noggrann, lagspelare och samarbetsvillig.
+                        </p>
+                        <p><strong>Övrigt:</strong> Svenska (modersmål), engelska (flytande) och manuellt B-körkort.</p>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Tjänster / Erfarenheter: Ljus beige bakgrund, stående kort med mörkröd bottenpanel och pil -->
+        <section id="erfarenheter" class="sektion-erfarenheter">
+            <div class="sektion-behallare">
+                <div class="sektion-huvud">
+                    <span class="sektion-etikett">ERBJUDANDEN &amp; ERFARENHETER</span>
+                    <h2>Erfarenheter</h2>
+                </div>
+                <div class="rutnat tjanster-rutnat">
+                    <article class="kort tjanstekort">
+                        <div class="tjanst-bild-omslag">
+                            <img src="Img/projekt-1.jpg" alt="Sociala medier och innehållsskapande" width="600"
+                                height="750">
+                        </div>
+                        <div class="tjanst-innehall">
+                            <h3>Sociala medier &amp; innehållsskapande</h3>
+                            <p>Digital kompetens inom Instagram och TikTok. Stort intresse och vana av att följa nya
+                                trender,
+                                redigera samt skapa engagerande foto- och videomaterial.</p>
+                        </div>
+                        <div class="kort-bottenpanel">
+                            <span class="panel-titel">Sociala Medier &amp; Innehåll</span>
+                            <span class="panel-pil" aria-hidden="true">→</span>
+                        </div>
+                    </article>
+                    <article class="kort tjanstekort">
+                        <div class="tjanst-bild-omslag">
+                            <img src="Img/projekt-2.jpg" alt="Kampanjarbete och butiksförsäljning" width="600"
+                                height="750">
+                        </div>
+                        <div class="tjanst-innehall">
+                            <h3>Kampanjarbete &amp; butiksförsäljning</h3>
+                            <p>Erfarenhet från Kicks och Hajen av att planera och genomföra butikskampanjer, arbeta i
+                                kassa och
+                                med varuhantering samt hantera olika kundsituationer.</p>
+                        </div>
+                        <div class="kort-bottenpanel">
+                            <span class="panel-titel">Kampanjarbete &amp; Butik</span>
+                            <span class="panel-pil" aria-hidden="true">→</span>
+                        </div>
+                    </article>
+                    <article class="kort tjanstekort">
+                        <div class="tjanst-bild-omslag">
+                            <img src="Img/projekt-3.jpg" alt="Service och gästbemötande" width="600" height="750">
+                        </div>
+                        <div class="tjanst-innehall">
+                            <h3>Service, kommunikation &amp; ledarskap</h3>
+                            <p>Mångårig erfarenhet som servitris och hovmästare på Taverna, &amp;Olles, Scandinavian
+                                Brasserie och
+                                Brödernas. Van vid gästmottagning, högt tempo och service på svenska och engelska.</p>
+                        </div>
+                        <div class="kort-bottenpanel">
+                            <span class="panel-titel">Service &amp; Ledarskap</span>
+                            <span class="panel-pil" aria-hidden="true">→</span>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Kontaktsektion: Exklusiv ram med kontaktinfo och HubSpot-formulär -->
+        <section id="kontakt" class="sektion-kontakt">
+            <div class="sektion-behallare">
+                <div class="kontakt-ruta">
+                    <div class="kontakt-topp">
+                        <span class="sektion-etikett">TA KONTAKT</span>
+                        <h2>Kontakt</h2>
+                    </div>
+                    <div class="kontakt-layout">
+                        <div class="kontakt-info">
+                            <p>Vill du veta mer, diskutera potentiella samarbeten eller framtida LIA-praktik? Hör gärna
+                                av
+                                dig via formuläret, telefon, mejl eller LinkedIn.</p>
+                            <div class="kontakt-detaljer">
+                                <p><strong>Telefon:</strong> <a href="tel:+46708375995">+46 70 837 5995</a></p>
+                                <p><strong>E-post:</strong> <a
+                                        href="mailto:sivertssonstina@gmail.com">sivertssonstina@gmail.com</a></p>
+                                <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/stina-sivertsson/"
+                                        target="_blank" rel="noopener">Stina Sivertsson på LinkedIn</a></p>
+                            </div>
+                            <p class="kontakt-referens">Referens lämnas gärna på begäran.</p>
+                        </div>
+
+                        <div class="kontakt-form-behallare">
+                            <div id="hubspot-kontaktformular" class="kontakt-formular" aria-label="Kontaktformulär">
+                            </div>
+                            <script src="https://js-eu1.hsforms.net/forms/embed/v2.js" defer></script>
+                            <script>
+                                window.addEventListener("load", function () {
+                                    if (!window.hbspt || !window.hbspt.forms) return;
+                                    window.hbspt.forms.create({
+                                        portalId: "149565944",
+                                        formId: "6a6249aa-cb9b-4ef0-b4d8-ead36f983fde",
+                                        region: "eu1",
+                                        target: "#hubspot-kontaktformular",
+                                        onFormSubmitted: function () {
+                                            window.dataLayer = window.dataLayer || [];
+                                            window.dataLayer.push({
+                                                event: "form_submission",
+                                                form_id: "hubspot-kontaktformular"
+                                            });
+                                        }
+                                    });
+                                });
+                            </script>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
 
-    <footer>
-        <p>© 2026 Stina Sivertsson · Byggd för hand med HTML, CSS och JavaScript</p>
+    <!-- Sidfot -->
+    <footer class="sidfot">
+        <div class="sidfot-innehall">
+            <p>© 2026 Stina Sivertsson · Byggd för hand med HTML, CSS och JavaScript</p>
+        </div>
     </footer>
 </body>
 

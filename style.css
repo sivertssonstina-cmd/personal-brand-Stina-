@@ -1,10 +1,14 @@
 /* ==========================================================================
    STYLE.CSS · STINA SIVERTSSON – PERSONAL BRAND
-   Uppdelad i 9 pedagogiska avsnitt med mobil-först-design och mörkt läge
+   Redesign med ny visuell identitet inspirerad av referensbild 1:
+   - Primär: Djup mörkröd / vinröd (Burgundy)
+   - Sekundär: Varm ljus beige / creme
+   - Mellanfärg: Dämpad grafitgrå för rymd och djup
+   - Typografi: Lyxig Editorial Serif, Alex Brush Script & Modern Sans
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
-   1 · Box-modellen: bredden gäller hela lådan och nollställer oönskade marginaler
+   1 · CSS Reset & Grundinställningar
    -------------------------------------------------------------------------- */
 *,
 *::before,
@@ -17,85 +21,115 @@ html {
 }
 
 /* --------------------------------------------------------------------------
-   2 · Varumärket som variabler
-   Inspirerat av bild 4, bild 1 och bild 2 (varma jord- och sandtoner)
+   2 · Varumärkesvariabler (Design Tokens)
    -------------------------------------------------------------------------- */
 :root {
-    /* Färger för ljust läge med hög kontrast (över 4,5:1 enligt tillgänglighetskrav) */
-    --text: #241a17;             /* Djup varm espressobrun för brödtext */
-    --text-muted: #5e4f4a;       /* Något mjukare brun för sekundär information */
-    --yta: #faf7f2;              /* Varm havremjölk/linnebeige som sidans bakgrund */
-    --yta-2: #f1ebe1;            /* Ljus sandton för kort och sidhuvud */
-    --primar: #38241d;           /* Mörk chokladbrun för rubriker */
-    --accent: #8f4226;           /* Varm terrakotta/sienna som ger liv åt knappar */
-    --accent-hover: #75331c;     /* Mörkare terrakottaton vid muspekare över */
-    --kant: rgba(56, 36, 29, 0.12); /* Mycket diskret ramlinje runt kort */
-    --skugga: 0 10px 25px rgba(36, 26, 23, 0.07); /* Mjuk, exklusiv skugga */
+    /* Färgpalett - Referensbild 1 */
+    --burgundy-deep: #2e060d;        /* Djupaste mörkröd för mörka accenter */
+    --burgundy: #460e18;             /* Primär signatur-mörkröd */
+    --burgundy-card: #4d111c;        /* Rymligt mörkrött kort */
+    --burgundy-hover: #5d1523;       /* Ljusare mörkröd vid hovring */
+    --burgundy-glow: rgba(70, 14, 24, 0.25);
 
-    /* Avstånd, hörn och typsnitt */
-    --luft: 1rem;
-    --radie: 16px;               /* Mjukt rundade hörn inspirerade av bild 1 och 4 */
-    --font-rubrik: "Playfair Display", Georgia, serif;
-    --font-brod: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+    --sand-accent: #c99b78;          /* Varm kamel/sand/guld för knappar & accenter */
+    --sand-hover: #dbaf8c;           /* Ljusare sand vid hovring */
+    --sand-soft: #f2e6dc;            /* Mjuk sandton för detaljer */
+
+    --beige-bg: #faf7f2;             /* Varm och mjuk off-white för sidan */
+    --beige-surface: #f3ece3;        /* Varm sandbeige för remsor & sektioner */
+    --white: #ffffff;                /* Ren vit för kort & polaroid */
+
+    --gray-dark: #323437;            /* Dämpad mörkgrå för intro-sektionen */
+    --gray-darker: #26282b;          /* Djupare grå ton */
+
+    --text-primary: #231b1d;         /* Grafitmörk text för hög läsbarhet */
+    --text-secondary: #5e5254;       /* Mjuk dämpad text */
+    --text-light: #ffffff;           /* Ren vit text på mörkrött */
+    --text-light-soft: #ede2d8;      /* Ljus creme/elfenben för brödtext */
+    --text-sand: #dfb491;            /* Ljus sandton för kursiva accenter */
+
+    --border-light: rgba(70, 14, 24, 0.08);
+    --border-dark: rgba(255, 255, 255, 0.14);
+    --border-gold: rgba(201, 155, 120, 0.25);
+
+    --shadow-soft: 0 10px 30px rgba(35, 27, 29, 0.06);
+    --shadow-medium: 0 18px 40px rgba(46, 6, 13, 0.12);
+    --shadow-deep: 0 25px 60px rgba(0, 0, 0, 0.4);
+    --shadow-polaroid: 0 16px 36px rgba(0, 0, 0, 0.38);
+
+    /* Typografi */
+    --font-script: "Alex Brush", cursive;
+    --font-serif: "Playfair Display", "Cormorant Garamond", Georgia, serif;
+    --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+
+    /* Radie & Layout */
+    --radius-sm: 8px;
+    --radius-md: 18px;
+    --radius-lg: 24px;
+    --radius-xl: 30px;
+    --radius-full: 999px;
+    --max-w-content: 1180px;
 }
 
 /* --------------------------------------------------------------------------
-   3 · Grundstil
-   Sätter grundläggande typsnitt, färger och textstorlekar för mobilen
+   3 · Grundtypografi & Generell Stil
    -------------------------------------------------------------------------- */
 body {
     margin: 0;
-    font-family: var(--font-brod);
+    font-family: var(--font-sans);
     font-size: 1.0625rem;
-    line-height: 1.65;
-    color: var(--text);
-    background-color: var(--yta);
+    line-height: 1.7;
+    color: var(--text-primary);
+    background-color: var(--beige-bg);
     overflow-x: hidden;
     transition: background-color 0.3s ease, color 0.3s ease;
+    -webkit-font-smoothing: antialiased;
 }
 
 h1,
 h2,
-h3 {
-    font-family: var(--font-rubrik);
+h3,
+h4 {
+    font-family: var(--font-serif);
     line-height: 1.25;
-    color: var(--primar);
+    color: var(--burgundy);
     margin-top: 0;
+    font-weight: 600;
     transition: color 0.3s ease;
 }
 
 h1 {
-    font-size: 1.85rem;
+    font-size: 1.95rem;
     margin-bottom: 0.25rem;
-    font-weight: 700;
+    letter-spacing: -0.01em;
 }
 
 h2 {
-    font-size: 1.65rem;
+    font-size: 2.15rem;
     margin-bottom: 1rem;
-    font-weight: 600;
+    letter-spacing: -0.01em;
 }
 
 h3 {
-    font-size: 1.25rem;
-    font-weight: 600;
+    font-size: 1.35rem;
+    margin-bottom: 0.75rem;
 }
 
 p {
-    max-width: 65ch;
     margin-top: 0;
-    margin-bottom: 1rem;
+    margin-bottom: 1.25rem;
+    color: var(--text-secondary);
 }
 
 a {
-    color: var(--accent);
+    color: var(--burgundy);
     text-decoration: underline;
-    text-underline-offset: 3px;
-    transition: color 0.2s ease;
+    text-underline-offset: 4px;
+    transition: color 0.25s ease;
 }
 
 a:hover {
-    color: var(--accent-hover);
+    color: var(--sand-accent);
 }
 
 img {
@@ -104,313 +138,957 @@ img {
     display: block;
 }
 
+/* Universell knapp */
+.knapp {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--sand-accent);
+    color: var(--burgundy-deep);
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: 0.95rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 0.95rem 2.2rem;
+    border-radius: var(--radius-full);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.knapp:hover {
+    background-color: var(--sand-hover);
+    color: var(--burgundy-deep);
+    text-decoration: none;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3);
+}
+
+.sektion-etikett {
+    display: inline-block;
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--sand-accent);
+    margin-bottom: 0.65rem;
+}
+
 /* --------------------------------------------------------------------------
-   4 · Sidhuvud och meny
-   Mobilversionen staplar rubriken, länkarna och temaknappen snyggt vertikalt
+   4 · Toppannonsering & Sidhuvud / Navigation
    -------------------------------------------------------------------------- */
+.toppbanner {
+    background-color: var(--burgundy-deep);
+    color: var(--text-sand);
+    text-align: center;
+    padding: 0.6rem 1rem;
+    font-size: 0.78rem;
+    letter-spacing: 0.18em;
+    font-weight: 600;
+    text-transform: uppercase;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
 .sidhuvud {
+    position: sticky;
+    top: 0;
+    z-index: 100;
     display: flex;
     flex-direction: column;
-    gap: var(--luft);
-    padding: calc(var(--luft) * 1.25) calc(var(--luft) * 1.5);
-    background-color: var(--yta);
-    border-bottom: 1px solid var(--kant);
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background-color: rgba(250, 247, 242, 0.96);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-light);
     transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
-.roll {
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    font-weight: 600;
-    color: var(--accent);
+.varumarke .logo-titel {
     margin: 0;
+    font-size: 1.75rem;
+}
+
+.varumarke .logo-titel a {
+    color: var(--burgundy);
+    text-decoration: none;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    transition: color 0.2s ease;
+}
+
+.varumarke .logo-titel a:hover {
+    color: var(--burgundy-hover);
+}
+
+.roll {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-weight: 600;
+    color: var(--burgundy);
+    opacity: 0.85;
+    margin: 0.15rem 0 0 0;
 }
 
 nav ul {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5rem 1rem;
+    gap: 0.75rem 1.75rem;
     list-style: none;
     margin: 0;
     padding: 0;
 }
 
 nav a {
-    font-size: 0.95rem;
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
     font-weight: 600;
-    color: var(--text);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--text-primary);
     text-decoration: none;
-    padding: 0.35rem 0.5rem;
-    border-radius: 6px;
-    transition: color 0.2s ease, background-color 0.2s ease;
+    position: relative;
+    padding: 0.35rem 0;
+    transition: color 0.25s ease;
+}
+
+nav a::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 1.5px;
+    background-color: var(--burgundy);
+    transition: width 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 nav a:hover {
-    color: var(--accent);
-    text-decoration: none;
-    background-color: var(--yta-2);
+    color: var(--burgundy);
 }
 
-/* Knappen för att växla mellan ljust och mörkt läge */
+nav a:hover::after {
+    width: 100%;
+}
+
+/* Temaknapp för mörkt läge */
 #tema {
     align-self: flex-start;
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    background-color: var(--yta-2);
-    color: var(--text);
-    border: 1px solid var(--kant);
-    padding: 0.5rem 1rem;
-    border-radius: 999px;
-    font-family: var(--font-brod);
-    font-size: 0.875rem;
+    background-color: transparent;
+    color: var(--burgundy);
+    border: 1px solid rgba(70, 14, 24, 0.25);
+    padding: 0.45rem 1rem;
+    border-radius: var(--radius-full);
+    font-family: var(--font-sans);
+    font-size: 0.82rem;
     font-weight: 600;
+    letter-spacing: 0.06em;
     cursor: pointer;
-    transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+    transition: all 0.25s ease;
 }
 
 #tema:hover {
-    border-color: var(--accent);
+    background-color: rgba(70, 14, 24, 0.06);
+    border-color: var(--burgundy);
     transform: translateY(-1px);
 }
 
 /* --------------------------------------------------------------------------
-   5 · Innehållsytan och sektioner
-   Ramar in innehållet på sidan med balanserad luftighet och marginaler
+   5 · Hero-sektion (Referensbild 1: Burgundy Hero & Ljus Beige Ticker)
    -------------------------------------------------------------------------- */
-main {
-    max-width: 68rem;
+.hero-sektion {
+    background: radial-gradient(circle at 75% 35%, #5d1523 0%, #460e18 55%, #30060e 100%);
+    color: var(--text-light);
+    padding-top: 3.5rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-innehall {
+    max-width: var(--max-w-content);
     margin: 0 auto;
-    padding: 0 calc(var(--luft) * 1.5);
+    padding: 0 1.5rem 3.5rem 1.5rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    align-items: center;
 }
 
-section {
-    padding: calc(var(--luft) * 3) 0;
-    border-bottom: 1px solid var(--kant);
+.hero-skript {
+    display: block;
+    font-family: var(--font-script);
+    font-size: 2.75rem;
+    line-height: 1.1;
+    color: var(--text-sand);
+    margin-bottom: 0.25rem;
+    letter-spacing: 0.02em;
 }
 
-section:last-of-type {
-    border-bottom: none;
-}
-
-/* Hero-sektionen: Första intrycket med stor rubrik och tydlig uppmaning */
-.hero {
-    padding: calc(var(--luft) * 3.5) 0;
-    max-width: 48rem;
-}
-
-.hero h2 {
-    font-size: 1.85rem;
-    line-height: 1.25;
-    margin-bottom: 1.25rem;
-    color: var(--primar);
-}
-
-.hero p {
-    font-size: 1.125rem;
-    color: var(--text-muted);
-    margin-bottom: 1.75rem;
-}
-
-/* Huvudknapp (Call to Action) */
-.knapp {
-    display: inline-block;
-    padding: 0.85rem 1.75rem;
-    background-color: var(--accent);
-    color: #ffffff;
+.hero-text h2 {
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 5vw, 3.1rem);
+    line-height: 1.18;
+    color: var(--white);
     font-weight: 600;
-    font-size: 1rem;
-    text-decoration: none;
-    border-radius: var(--radie);
-    box-shadow: 0 4px 14px rgba(143, 66, 38, 0.25);
-    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.015em;
+    max-width: 32ch;
 }
 
-.knapp:hover {
-    background-color: var(--accent-hover);
-    color: #ffffff;
-    text-decoration: none;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 18px rgba(143, 66, 38, 0.35);
+.hero-text p {
+    font-size: 1.125rem;
+    line-height: 1.8;
+    color: var(--text-light-soft);
+    max-width: 54ch;
+    margin-bottom: 2.25rem;
 }
 
-/* Om mig: Bild och text */
-.om-layout {
+.hero-bild-omslag {
     display: flex;
-    flex-direction: column;
-    gap: 1.75rem;
+    justify-content: center;
 }
 
-.om-layout img {
-    border-radius: var(--radie);
+.hero-bild-ram {
     width: 100%;
-    max-width: 320px;
-    aspect-ratio: 1 / 1;
+    max-width: 440px;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 25px 50px -10px rgba(0, 0, 0, 0.45);
+    background-color: var(--burgundy-deep);
+}
+
+.hero-bild {
+    width: 100%;
+    aspect-ratio: 4 / 4.6;
     object-fit: cover;
-    border: 1px solid var(--kant);
-    box-shadow: var(--skugga);
+    display: block;
+    transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-.om-text p {
-    font-size: 1.0625rem;
+.hero-bild-ram:hover .hero-bild {
+    transform: scale(1.03);
 }
 
-/* Kontakt-sektionen som en välkomnande ruta */
-.kontakt-ruta {
-    background-color: var(--yta-2);
-    border: 1px solid var(--kant);
-    border-radius: var(--radie);
-    padding: 2rem 1.5rem;
-    box-shadow: var(--skugga);
+/* Underliggande banner/remsa i ljus beige med nyckelord */
+.hero-remsa {
+    background-color: var(--beige-surface);
+    border-top: 1px solid var(--border-light);
+    border-bottom: 1px solid var(--border-light);
+    padding: 1.15rem 1rem;
+    overflow-x: auto;
+    white-space: nowrap;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.hero-remsa::-webkit-scrollbar {
+    display: none;
+}
+
+.hero-remsa-innehall {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.25rem;
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--burgundy);
+    min-width: max-content;
+}
+
+.hero-remsa-innehall .prick {
+    color: var(--sand-accent);
+    font-size: 1.1rem;
+    line-height: 1;
 }
 
 /* --------------------------------------------------------------------------
-   6 · Kort i ett rutnät
-   Responsiva kort för både utbildningar och erfarenheter
+   6 · Introduktionssektion / Kortmodul (#om)
+   Dämpad mörkgrå bakgrund med centrerat mörkrött kort & överlappande polaroids
    -------------------------------------------------------------------------- */
+.sektion-om {
+    background-color: var(--gray-dark);
+    padding: 6.5rem 1.5rem 5.5rem 1.5rem;
+    position: relative;
+}
+
+.om-kort-omslag {
+    max-width: 760px;
+    margin: 0 auto;
+    position: relative;
+}
+
+/* Två polaroid-bilder som överlappar kortets överkant */
+.polaroid-behallare {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    position: relative;
+    margin-bottom: -4.5rem;
+    z-index: 10;
+}
+
+.polaroid {
+    background-color: var(--white);
+    padding: 10px 10px 28px 10px;
+    border-radius: 3px;
+    box-shadow: var(--shadow-polaroid);
+    width: 170px;
+    height: 195px;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s ease;
+    cursor: default;
+}
+
+.polaroid-inre {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: #eee;
+}
+
+.polaroid-inre img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.polaroid-vanster {
+    transform: rotate(-6deg) translateY(-8px);
+}
+
+.polaroid-hoger {
+    transform: rotate(5deg) translateY(4px);
+}
+
+.polaroid:hover {
+    transform: rotate(0deg) translateY(-18px) scale(1.06);
+    box-shadow: 0 24px 48px rgba(0, 0, 0, 0.5);
+    z-index: 15;
+}
+
+/* Centrerat mörkrött rumsligt kort med rundade hörn och tunn ljus ram/glöd */
+.om-kort {
+    background-color: var(--burgundy-card);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-dark);
+    box-shadow: var(--shadow-deep), 0 0 40px rgba(70, 14, 24, 0.3);
+    padding: 6.5rem 2.5rem 3.5rem 2.5rem;
+    text-align: center;
+    color: var(--text-light);
+    position: relative;
+    z-index: 2;
+}
+
+.kort-skript {
+    display: block;
+    font-family: var(--font-script);
+    font-size: 2.75rem;
+    line-height: 1.1;
+    color: var(--text-sand);
+    margin-bottom: 0.15rem;
+}
+
+.om-kort h2 {
+    font-family: var(--font-serif);
+    font-size: 2.5rem;
+    color: var(--white);
+    margin-bottom: 0.4rem;
+    font-weight: 600;
+}
+
+.kort-underrubrik {
+    font-family: var(--font-sans);
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--sand-accent);
+    margin-bottom: 2rem;
+}
+
+.om-text p {
+    font-size: 1.08rem;
+    line-height: 1.85;
+    color: var(--text-light-soft);
+    max-width: 62ch;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.om-text p:last-child {
+    margin-bottom: 0;
+}
+
+/* --------------------------------------------------------------------------
+   7 · Utbildning & Kompetenser (#utbildning)
+   Ljus sektion med redaktionella kort, tidsstämplar och stilrena taggar
+   -------------------------------------------------------------------------- */
+.sektion-utbildning {
+    background-color: var(--beige-bg);
+    padding: 5.5rem 1.5rem;
+}
+
+.sektion-behallare {
+    max-width: var(--max-w-content);
+    margin: 0 auto;
+}
+
+.sektion-huvud {
+    margin-bottom: 3rem;
+}
+
+.sektion-huvud h2 {
+    font-size: 2.4rem;
+    margin-bottom: 0;
+}
+
 .rutnat {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 1.5rem;
+    gap: 1.75rem;
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
-.kort {
-    background-color: var(--yta-2);
-    padding: 1.75rem;
-    border: 1px solid var(--kant);
-    border-radius: var(--radie);
-    box-shadow: var(--skugga);
+.utbildning-kort {
+    background-color: var(--white);
+    border-radius: var(--radius-md);
+    padding: 2.25rem 2rem;
+    border: 1px solid var(--border-light);
+    border-top: 4px solid var(--burgundy);
+    box-shadow: var(--shadow-soft);
     display: flex;
     flex-direction: column;
-    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s ease;
 }
 
-.kort:hover {
+.utbildning-kort:hover {
     transform: translateY(-4px);
-    box-shadow: 0 16px 36px rgba(36, 26, 23, 0.12);
-    border-color: rgba(143, 66, 38, 0.3);
+    box-shadow: var(--shadow-medium);
+    border-color: rgba(70, 14, 24, 0.16);
 }
 
-.kort img {
-    border-radius: calc(var(--radie) - 4px);
+.kort-topp-dekor {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin-bottom: 1.25rem;
-    aspect-ratio: 16 / 10;
+}
+
+.dekor-nummer {
+    font-family: var(--font-serif);
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--sand-accent);
+}
+
+.dekor-status {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--radius-full);
+    background-color: var(--beige-surface);
+    color: var(--burgundy);
+}
+
+.utbildning-kort h3 {
+    font-size: 1.28rem;
+    color: var(--burgundy);
+    margin-bottom: 0.85rem;
+}
+
+.utbildning-kort p {
+    font-size: 0.985rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    margin-bottom: 0.75rem;
+}
+
+.utbildning-kort p:last-child {
+    margin-bottom: 0;
+}
+
+.utbildning-kort strong {
+    color: var(--burgundy);
+}
+
+/* Kompetensbrickor / taggar */
+.kompetens-taggar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 0.5rem 0 1.25rem 0;
+}
+
+.tagg {
+    display: inline-flex;
+    align-items: center;
+    background-color: var(--beige-surface);
+    color: var(--burgundy);
+    border: 1px solid rgba(70, 14, 24, 0.12);
+    border-radius: var(--radius-full);
+    padding: 0.35rem 0.85rem;
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    transition: all 0.2s ease;
+}
+
+.tagg:hover {
+    background-color: var(--burgundy);
+    color: var(--white);
+    transform: translateY(-2px);
+}
+
+/* --------------------------------------------------------------------------
+   8 · Tjänster / Erbjudanden & Erfarenheter (#erfarenheter)
+   Ljus beige bakgrund, stående kort med mörkröd bottenpanel och pil
+   -------------------------------------------------------------------------- */
+.sektion-erfarenheter {
+    background-color: var(--beige-surface);
+    padding: 5.5rem 1.5rem;
+}
+
+.tjanstekort {
+    background-color: var(--white);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: 1px solid var(--border-light);
+    box-shadow: var(--shadow-soft);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s ease;
+}
+
+.tjanstekort:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-medium);
+}
+
+.tjanst-bild-omslag {
+    aspect-ratio: 4 / 3.4;
+    overflow: hidden;
+    background-color: #eae3d9;
+    position: relative;
+}
+
+.tjanst-bild-omslag img {
+    width: 100%;
+    height: 100%;
     object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.tjanstekort:hover .tjanst-bild-omslag img {
+    transform: scale(1.06);
+}
+
+.tjanst-innehall {
+    padding: 1.75rem 1.6rem 1.5rem 1.6rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.tjanst-innehall h3 {
+    font-size: 1.3rem;
+    color: var(--burgundy);
+    margin-bottom: 0.75rem;
+}
+
+.tjanst-innehall p {
+    font-size: 0.985rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    margin-bottom: 0;
+}
+
+/* Mörkröd bottenpanel med titel och klickbarhetsindikator (pil) */
+.kort-bottenpanel {
+    background-color: var(--burgundy);
+    color: var(--white);
+    padding: 1.15rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: background-color 0.25s ease;
+}
+
+.panel-titel {
+    font-family: var(--font-sans);
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--text-light-soft);
+}
+
+.panel-pil {
+    font-size: 1.25rem;
+    color: var(--sand-accent);
+    transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.tjanstekort:hover .kort-bottenpanel {
+    background-color: var(--burgundy-hover);
+}
+
+.tjanstekort:hover .panel-pil {
+    transform: translateX(6px);
+}
+
+/* --------------------------------------------------------------------------
+   9 · Kontakt-sektion (#kontakt) & HubSpot Formulär
+   Exklusiv ram med kontaktuppgifter och integrerat formulär
+   -------------------------------------------------------------------------- */
+.sektion-kontakt {
+    background-color: var(--beige-bg);
+    padding: 5.5rem 1.5rem;
+}
+
+.kontakt-ruta {
+    background-color: var(--white);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-xl);
+    padding: 2.5rem 1.75rem;
+    box-shadow: var(--shadow-soft);
+}
+
+.kontakt-topp {
+    margin-bottom: 2rem;
+}
+
+.kontakt-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+
+.kontakt-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.kontakt-info p {
+    font-size: 1.05rem;
+    line-height: 1.75;
+    margin: 0;
+}
+
+.kontakt-detaljer p {
+    margin: 0.5rem 0;
+    font-size: 1.02rem;
+}
+
+.kontakt-detaljer strong {
+    color: var(--burgundy);
+    margin-right: 0.35rem;
+}
+
+.kontakt-referens {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    font-style: italic;
+    border-left: 2px solid var(--sand-accent);
+    padding-left: 0.75rem;
+    margin-top: 0.5rem !important;
+}
+
+/* HubSpot-formulärets ram */
+.kontakt-form-behallare {
+    min-height: 250px;
+}
+
+.kontakt-formular input,
+.kontakt-formular textarea,
+.kontakt-formular select {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    padding: 0.85rem 1.1rem;
+    color: var(--text-primary);
+    background-color: var(--beige-bg);
+    border: 1px solid rgba(70, 14, 24, 0.15);
+    border-radius: var(--radius-sm);
+    transition: all 0.25s ease;
     width: 100%;
 }
 
-.kort h3 {
-    margin-top: 0;
-    margin-bottom: 0.75rem;
-    font-size: 1.25rem;
-    color: var(--primar);
-}
-
-.kort p {
-    margin: 0;
-    font-size: 0.985rem;
-    color: var(--text-muted);
+.kontakt-formular input:focus,
+.kontakt-formular textarea:focus,
+.kontakt-formular select:focus {
+    outline: none;
+    border-color: var(--burgundy);
+    box-shadow: 0 0 0 3px rgba(70, 14, 24, 0.15);
+    background-color: var(--white);
 }
 
 /* --------------------------------------------------------------------------
-   7 · Knappar, fokus och sidfot
-   Gör sidan tillgänglig med tydlig tangentbordsfokus och ren sidfot
+   10 · Sidfot
+   -------------------------------------------------------------------------- */
+.sidfot {
+    background-color: var(--burgundy-deep);
+    color: var(--text-sand);
+    padding: 2.5rem 1.5rem;
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.sidfot p {
+    margin: 0;
+    font-size: 0.9rem;
+    letter-spacing: 0.04em;
+    color: var(--text-sand);
+    opacity: 0.9;
+}
+
+/* --------------------------------------------------------------------------
+   11 · Tillgänglighet & Tangentbordsfokus
    -------------------------------------------------------------------------- */
 a:focus-visible,
 button:focus-visible {
-    outline: 3px solid var(--accent);
+    outline: 3px solid var(--sand-accent);
     outline-offset: 3px;
 }
 
-footer {
-    padding: calc(var(--luft) * 2.5) calc(var(--luft) * 1.5);
-    text-align: center;
-    background-color: var(--yta);
-    border-top: 1px solid var(--kant);
-    color: var(--text-muted);
-    font-size: 0.925rem;
-}
-
-footer p {
-    margin: 0 auto;
-}
-
 /* --------------------------------------------------------------------------
-   8 · Större skärmar (Dator och surfplatta via Media Queries)
-   För skärmar bredare än 48rem (768px)
+   12 · Responsiva Brytpunkter (Mobil, Surfplatta & Desktop)
    -------------------------------------------------------------------------- */
+@media (max-width: 32rem) {
+    .polaroid-behallare {
+        gap: 0.75rem;
+        margin-bottom: -3.5rem;
+    }
+
+    .polaroid {
+        width: 135px;
+        height: 160px;
+        padding: 7px 7px 22px 7px;
+    }
+
+    .om-kort {
+        padding: 5rem 1.25rem 2.5rem 1.25rem;
+    }
+
+    .hero-innehall {
+        padding: 0 1.25rem 2.5rem 1.25rem;
+    }
+
+    .hero-text h2 {
+        font-size: 1.85rem;
+    }
+
+    .hero-skript {
+        font-size: 2.25rem;
+    }
+
+    .sektion-om {
+        padding: 5rem 1rem 4rem 1rem;
+    }
+
+    .kontakt-ruta {
+        padding: 2rem 1.25rem;
+    }
+}
+
 @media (min-width: 48rem) {
     .sidhuvud {
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
-        padding: calc(var(--luft) * 1.5) calc(var(--luft) * 3);
+        padding: 1.25rem 3rem;
     }
 
     #tema {
         align-self: center;
     }
 
-    h1 {
-        font-size: 2.35rem;
+    .hero-innehall {
+        grid-template-columns: 1.15fr 0.85fr;
+        gap: 3.5rem;
+        padding-bottom: 4.5rem;
     }
 
-    h2 {
-        font-size: 2.1rem;
+    .polaroid {
+        width: 190px;
+        height: 220px;
+        padding: 12px 12px 32px 12px;
     }
 
-    .hero h2 {
-        font-size: 2.5rem;
+    .polaroid-vanster {
+        transform: rotate(-6deg) translateY(-14px);
     }
 
-    /* Om mig visas sida vid sida på större skärmar */
-    .om-layout {
-        flex-direction: row;
-        align-items: flex-start;
-        gap: 3rem;
+    .polaroid-hoger {
+        transform: rotate(5deg) translateY(6px);
     }
 
-    .om-layout img {
-        flex-shrink: 0;
-        max-width: 320px;
+    .om-kort {
+        padding: 7rem 4rem 4.5rem 4rem;
     }
 
-    /* Rutnätet för kort visas med tre kolumner */
     .rutnat {
         grid-template-columns: repeat(3, 1fr);
-        gap: 1.75rem;
+        gap: 2rem;
     }
 
     .kontakt-ruta {
-        padding: 3rem;
+        padding: 3.5rem 3.5rem;
+    }
+
+    .kontakt-layout {
+        display: grid;
+        grid-template-columns: 1fr 1.3fr;
+        gap: 4rem;
+        align-items: start;
+    }
+}
+
+@media (min-width: 64rem) {
+    .hero-sektion {
+        padding-top: 4.5rem;
+    }
+
+    .hero-text h2 {
+        font-size: 3.2rem;
     }
 }
 
 /* --------------------------------------------------------------------------
-   9 · Mörkt läge
-   När body har klassen morkt ändras variablerna till en djup espresso-look
+   13 · Mörkt läge (body.morkt)
+   Anpassar paletten harmoniskt till djup espresso & champagne med bevarad burgundy
    -------------------------------------------------------------------------- */
 body.morkt {
-    --text: #f5efeb;             /* Mjuk elfenbenstext (kontrast > 15:1) */
-    --text-muted: #c7bbb5;       /* Ljusgrå/beige för sekundärtext (kontrast > 9:1) */
-    --yta: #171210;              /* Djup espressosvart bakgrund */
-    --yta-2: #231c19;            /* Mörk chokladton för kort och sidhuvud */
-    --primar: #eadcce;           /* Ljus champagnebeige för rubriker */
-    --accent: #d89b6e;           /* Varm gyllene kolaaccent */
-    --accent-hover: #e8b38a;
-    --kant: rgba(245, 239, 235, 0.12); /* Diskret ljus kontur */
-    --skugga: 0 10px 30px rgba(0, 0, 0, 0.5); /* Djupare skugga för mörkt läge */
+    --text-primary: #f5ede6;
+    --text-secondary: #c9bcba;
+    --beige-bg: #191415;             /* Djup varm mörk bakgrund */
+    --beige-surface: #241d1f;        /* Något ljusare för kort & remsor */
+    --white: #281f22;                /* Mörk bakgrund för vita kort */
+    --border-light: rgba(255, 255, 255, 0.1);
+
+    --burgundy-deep: #140508;
+    --burgundy: #dfb491;             /* Rubriker blir champagne/sand för maximal kontrast */
+    --burgundy-card: #380a13;        /* Kortet förblir stolt mörkrött */
+    --burgundy-hover: #e8c4a6;
+
+    --gray-dark: #1f1b1d;            /* Djup dämpad yta */
 }
 
-body.morkt .knapp {
-    color: #171210;              /* Mörk text på accentknappen ger över 7:1 i kontrast */
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+body.morkt .sidhuvud {
+    background-color: rgba(25, 20, 21, 0.95);
+    border-bottom-color: rgba(255, 255, 255, 0.1);
 }
 
-body.morkt .knapp:hover {
-    color: #171210;
+body.morkt .varumarke .logo-titel a {
+    color: #ffffff;
+}
+
+body.morkt .roll {
+    color: var(--sand-accent);
+}
+
+body.morkt nav a {
+    color: var(--text-primary);
+}
+
+body.morkt nav a::after {
+    background-color: var(--sand-accent);
+}
+
+body.morkt #tema {
+    color: var(--sand-accent);
+    border-color: rgba(201, 155, 120, 0.4);
+}
+
+body.morkt #tema:hover {
+    background-color: rgba(201, 155, 120, 0.15);
+}
+
+body.morkt .hero-remsa {
+    background-color: #241d1f;
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+body.morkt .hero-remsa-innehall {
+    color: var(--sand-accent);
+}
+
+body.morkt .utbildning-kort {
+    background-color: #261e21;
+    border-color: rgba(255, 255, 255, 0.1);
+    border-top-color: var(--sand-accent);
+}
+
+body.morkt .utbildning-kort h3 {
+    color: #ffffff;
+}
+
+body.morkt .dekor-status {
+    background-color: #382b2f;
+    color: var(--sand-accent);
+}
+
+body.morkt .tagg {
+    background-color: #382b2f;
+    color: #f5ede6;
+    border-color: rgba(255, 255, 255, 0.12);
+}
+
+body.morkt .tagg:hover {
+    background-color: var(--sand-accent);
+    color: #191415;
+}
+
+body.morkt .tjanstekort {
+    background-color: #261e21;
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+body.morkt .tjanst-innehall h3 {
+    color: #ffffff;
+}
+
+body.morkt .kort-bottenpanel {
+    background-color: #380a13;
+}
+
+body.morkt .kontakt-ruta {
+    background-color: #241d1f;
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+body.morkt .kontakt-info a {
+    color: var(--sand-accent);
+}
+
+body.morkt .kontakt-formular input,
+body.morkt .kontakt-formular textarea,
+body.morkt .kontakt-formular select {
+    background-color: #191415;
+    color: #f5ede6;
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+body.morkt .kontakt-formular input:focus,
+body.morkt .kontakt-formular textarea:focus {
+    border-color: var(--sand-accent);
+    box-shadow: 0 0 0 3px rgba(201, 155, 120, 0.25);
+    background-color: #20181b;
 }
