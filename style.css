@@ -656,6 +656,28 @@ nav a:hover::after {
     margin: 0;
 }
 
+.kurs-kort-rutnat {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    margin-bottom: 2rem;
+}
+
+.kurs-kort {
+    min-width: 0;
+    padding: 1.5rem;
+}
+
+.kurs-kort h3 {
+    margin: 0 0 0.65rem;
+}
+
+.kurs-kort p {
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: 0.94rem;
+    line-height: 1.6;
+}
+
 .kompetens-kort {
     background-color: var(--white);
     border-radius: var(--radius-md);
@@ -729,6 +751,29 @@ nav a:hover::after {
     color: var(--sand-accent);
     font-size: 1.2rem;
     line-height: 1.2;
+}
+
+/* Kurserna visas som egna boxar för att vara lätta att överblicka. */
+.kurs-boxlista {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+    gap: 0.65rem;
+}
+
+.kurs-boxlista li {
+    display: flex;
+    align-items: center;
+    min-height: 3.25rem;
+    padding: 0.7rem 0.85rem;
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-sm);
+    background-color: var(--beige-surface);
+    font-size: 0.86rem;
+    line-height: 1.45;
+}
+
+.kurs-boxlista li::before {
+    content: none;
 }
 
 /* Kompetensbrickor / taggar (behålls för bakåtkompatibilitet) */
@@ -1080,6 +1125,12 @@ button:focus-visible {
     }
 }
 
+@media (min-width: 48rem) {
+    .kurs-kort-rutnat {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
 @media (min-width: 64rem) {
     .hero-sektion {
         padding-top: 4.5rem;
@@ -1092,6 +1143,10 @@ button:focus-visible {
     .kompetens-rutnat {
         grid-template-columns: repeat(4, 1fr);
         gap: 1.5rem;
+    }
+
+    .kurs-kort-rutnat {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 }
 
@@ -1113,6 +1168,14 @@ body.morkt {
     --burgundy-hover: #e8c4a6;
 
     --gray-dark: #1f1b1d;            /* Djup dämpad yta */
+}
+
+body.morkt .hero-text h2 {
+    color: var(--text-light);
+}
+
+body.morkt .om-kort h2 {
+    color: var(--text-light);
 }
 
 body.morkt .sidhuvud {
