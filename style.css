@@ -808,6 +808,82 @@ nav a:hover::after {
    8 · Tjänster / Erbjudanden & Erfarenheter (#erfarenheter)
    Ljus beige bakgrund, stående kort med mörkröd bottenpanel och pil
    -------------------------------------------------------------------------- */
+.sektion-projekt {
+    background-color: var(--beige-bg);
+    padding: 5.5rem 1.5rem;
+}
+
+.projektkort {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2.25rem;
+    background-color: var(--white);
+    border: 1px solid var(--border-light);
+    border-top: 4px solid var(--burgundy);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-soft);
+}
+
+.projektkort-etikett {
+    margin-bottom: 1rem;
+    color: var(--sand-accent);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+}
+
+.projektkort h3 {
+    margin-bottom: 1.75rem;
+    color: var(--burgundy);
+    font-size: 1.5rem;
+}
+
+.projektkort-innehall {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.projektkort-innehall h4 {
+    margin-bottom: 0.5rem;
+    color: var(--burgundy);
+    font-family: var(--font-serif);
+    font-size: 1.2rem;
+}
+
+.projektkort-innehall p,
+.projektkort-innehall li {
+    color: var(--text-secondary);
+    font-size: 0.98rem;
+    line-height: 1.7;
+}
+
+.projektkort-innehall p,
+.projektkort-innehall ul {
+    margin: 0;
+}
+
+.projektkort-innehall ul {
+    padding-left: 1.25rem;
+}
+
+.projektkort-innehall li + li {
+    margin-top: 0.6rem;
+}
+
+body.morkt .projektkort {
+    background-color: #261e21;
+    border-color: rgba(255, 255, 255, 0.1);
+    border-top-color: var(--sand-accent);
+}
+
+body.morkt .projektkort h3,
+body.morkt .projektkort-innehall h4 {
+    color: #ffffff;
+}
+
+/* --------------------------------------------------------------------------
+   8 · Tjänster / Erbjudanden & Erfarenheter (#erfarenheter)
+   -------------------------------------------------------------------------- */
 .sektion-erfarenheter {
     background-color: var(--beige-surface);
     padding: 5.5rem 1.5rem;
